@@ -1,11 +1,11 @@
-#Machine Learning Report
+#Spam filtering/text classification
 
 
 ##Classifier Summaries
 
 ###c50
 
-#### Increased number of trials from 10 to 100. 
+For c50, we increased the boosting. Boosting is the process of adding weak learners in such a way that newer learners pick up the slack of older learners. In this way we can increase the accuracy of the model. So, we increased the number of boosting iterations by increasing the trials parameter from 10 to 100.
 
 True positive rate:   0.9778085992 <br>
 False positive rate:  0.06471816284 <br>
@@ -14,6 +14,8 @@ False negative rate:  0.02219140083 <br>
 Misclassification rate:  0.03916666667 <br>
 
 ###kNN
+
+For kNN, the choice of k depends upon the data. Generally, the larger values of k reduce the effect of noise on the classification. However, during our experiments, we were able to find less noise with a lower k. We decreased k from 5 to 1.
 
 True positive rate:   0.839112344 <br>
 False positive rate:  0.2338204593 <br>
