@@ -1,0 +1,292 @@
+C5.0 results
+
+Basic model
+
+Call:
+C5.0.default(x = trainX, y = trainy, trials = 1)
+
+
+C5.0 [Release 2.07 GPL Edition]   Mon Nov  2 20:43:50 2015
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 3400 cases (58 attributes) from undefined.data
+
+Decision tree:
+
+remove > 0:
+:...hp <= 0.04: ham (557/21)
+:   hp > 0.04:
+:   :...our <= 0.16: spam (12/1)
+:       our > 0.16: ham (13/1)
+remove <= 0:
+:...char_..4 > 0.041:
+    :...hp > 0.38: spam (62/2)
+    :   hp <= 0.38:
+    :   :...capital_run_length_longest <= 7:
+    :       :...you <= 3.44: spam (19)
+    :       :   you > 3.44: ham (6/2)
+    :       capital_run_length_longest > 7:
+    :       :...X1999 <= 0.2:
+    :           :...edu <= 0.1: ham (417/16)
+    :           :   edu > 0.1:
+    :           :   :...addresses <= 0.71: spam (7/1)
+    :           :       addresses > 0.71: ham (2)
+    :           X1999 > 0.2:
+    :           :...internet > 0.32: ham (7)
+    :               internet <= 0.32:
+    :               :...X1999 <= 0.75: spam (13)
+    :                   X1999 > 0.75: ham (5/1)
+    char_..4 <= 0.041:
+    :...X0 > 0.34:
+        :...capital_run_length_longest > 9: ham (29)
+        :   capital_run_length_longest <= 9:
+        :   :...internet <= 0.22: spam (4)
+        :       internet > 0.22: ham (2)
+        X0 <= 0.34:
+        :...char_..3 > 0.458:
+            :...edu > 0.06: spam (18)
+            :   edu <= 0.06:
+            :   :...capital_run_length_total > 63:
+            :       :...char_..1 <= 0.301: ham (98/3)
+            :       :   char_..1 > 0.301:
+            :       :   :...hp > 0.22: spam (3)
+            :       :       hp <= 0.22:
+            :       :       :...all <= 1.04: ham (13)
+            :       :           all > 1.04: spam (3)
+            :       capital_run_length_total <= 63:
+            :       :...free > 0.81: ham (16)
+            :           free <= 0.81:
+            :           :...business > 0.5: ham (5)
+            :               business <= 0.5:
+            :               :...you <= 4.25: spam (70/9)
+            :                   you > 4.25:
+            :                   :...re > 0.49: spam (3)
+            :                       re <= 0.49:
+            :                       :...char_..3 > 0.816: ham (11)
+            :                           char_..3 <= 0.816:
+            :                           :...char_..3 <= 0.598: ham (2)
+            :                               char_..3 > 0.598: spam (7)
+            char_..3 <= 0.458:
+            :...money > 0.02:
+                :...hp > 0.08: spam (7)
+                :   hp <= 0.08:
+                :   :...edu > 0.08: spam (6)
+                :       edu <= 0.08:
+                :       :...capital_run_length_longest <= 9: spam (8/1)
+                :           capital_run_length_longest > 9: ham (20)
+                money <= 0.02:
+                :...font > 0.12:
+                    :...char_. > 0.895: spam (9)
+                    :   char_. <= 0.895:
+                    :   :...edu <= 0.09: ham (14)
+                    :       edu > 0.09: spam (4)
+                    font <= 0.12:
+                    :...receive > 0.28:
+                        :...address <= 0.21:
+                        :   :...internet <= 0.06: spam (32/1)
+                        :   :   internet > 0.06: ham (6/1)
+                        :   address > 0.21:
+                        :   :...you <= 1.53: spam (4/1)
+                        :       you > 1.53: ham (8)
+                        receive <= 0.28:
+                        :...hp > 0: spam (667/7)
+                            hp <= 0:
+                            :...business > 0.13:
+                                :...you <= 2.66: spam (35/9)
+                                :   you > 2.66: ham (15/1)
+                                business <= 0.13:
+                                :...capital_run_length_longest <= 10: spam (797/28)
+                                    capital_run_length_longest > 10:
+                                    :...re > 0.25: spam (112/1)
+                                        re <= 0.25:
+                                        :...george > 0.03: spam (36)
+                                            george <= 0.03:
+                                            :...our > 0.66: ham (23/3)
+                                                our <= 0.66:
+                                                :...technology > 0.22: ham (14/5)
+                                                    technology <= 0.22:
+                                                    :...over <= 1.12: spam (175/39)
+                                                        over > 1.12: ham (4)
+
+
+Evaluation on training data (3400 cases):
+
+      Decision Tree   
+    ----------------  
+    Size      Errors  
+
+      48  154( 4.5%)   <<
+
+
+     (a)   (b)    <-classified as
+    ----  ----
+    1233   100    (a): class ham
+      54  2013    (b): class spam
+
+
+  Attribute usage:
+
+  100.00% remove
+   89.94% hp
+   82.88% char_..4
+   67.06% X0
+   66.03% char_..3
+   58.71% money
+   57.50% font
+   56.71% receive
+   50.00% capital_run_length_longest
+   38.50% business
+   21.38% edu
+   13.26% X1999
+   11.38% re
+    7.41% george
+    7.09% our
+    6.79% capital_run_length_total
+    5.68% technology
+    5.29% you
+    5.26% over
+    3.44% char_..1
+    3.35% free
+    2.03% internet
+    1.47% address
+    0.79% char_.
+    0.47% all
+    0.26% addresses
+
+
+Time: 0.1 secs
+
+True positive rate:   0.9625520111 
+False positive rate:  0.09812108559 
+True negative rate:   0.9018789144 
+False negative rate:  0.0374479889 
+Misclassification rate:  0.06166666667 
+C5imp output:
+                           Overall
+remove                      100.00
+hp                           89.94
+char_..4                     82.88
+X0                           67.06
+char_..3                     66.03
+money                        58.71
+font                         57.50
+receive                      56.71
+capital_run_length_longest   50.00
+business                     38.50
+edu                          21.38
+X1999                        13.26
+re                           11.38
+george                        7.41
+our                           7.09
+capital_run_length_total      6.79
+technology                    5.68
+you                           5.29
+over                          5.26
+char_..1                      3.44
+free                          3.35
+internet                      2.03
+address                       1.47
+char_.                        0.79
+all                           0.47
+addresses                     0.26
+make                          0.00
+X3d                           0.00
+order                         0.00
+mail                          0.00
+will                          0.00
+people                        0.00
+report                        0.00
+email                         0.00
+credit                        0.00
+your                          0.00
+hpl                           0.00
+X650                          0.00
+lab                           0.00
+labs                          0.00
+telnet                        0.00
+X857                          0.00
+data                          0.00
+X415                          0.00
+X85                           0.00
+parts                         0.00
+pm                            0.00
+direct                        0.00
+cs                            0.00
+meeting                       0.00
+original                      0.00
+project                       0.00
+table                         0.00
+conference                    0.00
+char_..2                      0.00
+char_..5                      0.00
+capital_run_length_average    0.00
+
+
+
+Boosted model
+True positive rate:   0.9778085992 
+False positive rate:  0.06471816284 
+True negative rate:   0.9352818372 
+False negative rate:  0.02219140083 
+Misclassification rate:  0.03916666667 
+C5imp output:
+                           Overall
+X3d                         100.00
+remove                      100.00
+free                        100.00
+credit                      100.00
+X0                          100.00
+money                       100.00
+hp                          100.00
+hpl                         100.00
+george                      100.00
+lab                         100.00
+labs                        100.00
+pm                          100.00
+cs                          100.00
+meeting                     100.00
+edu                         100.00
+conference                  100.00
+char_.                      100.00
+char_..3                    100.00
+char_..4                    100.00
+capital_run_length_longest  100.00
+font                         99.97
+over                         99.91
+data                         99.82
+project                      99.68
+X85                          99.62
+receive                      99.59
+addresses                    99.29
+capital_run_length_total     99.15
+business                     98.91
+re                           98.32
+char_..5                     98.03
+original                     95.91
+order                        95.26
+X1999                        94.76
+capital_run_length_average   94.71
+X857                         94.50
+will                         94.18
+parts                        93.71
+all                          92.91
+our                          92.68
+telnet                       92.26
+internet                     92.00
+your                         91.50
+X650                         90.79
+address                      90.18
+report                       90.03
+char_..1                     88.94
+you                          88.71
+make                         87.44
+mail                         85.41
+char_..2                     83.65
+email                        82.88
+people                       82.59
+direct                       77.41
+technology                   77.21
+table                         4.44
+X415                          0.00

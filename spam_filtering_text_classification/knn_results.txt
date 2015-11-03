@@ -1,0 +1,16 @@
+what I changed:
+Decreased number of neighbours from 5 to 1. 
+
+Class package kNN results
+True positive rate:   0.8349514563 
+False positive rate:  0.2630480167 
+True negative rate:   0.7369519833 
+False negative rate:  0.1650485437 
+Misclassification rate:  0.2041666667 
+
+Class package kNN results
+True positive rate:   0.839112344 
+False positive rate:  0.2338204593 
+True negative rate:   0.7661795407 
+False negative rate:  0.160887656 
+Misclassification rate:  0.19 

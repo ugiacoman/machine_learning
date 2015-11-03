@@ -1,0 +1,60 @@
+e1071 SVM results
+
+
+Call:
+svm.default(x = trainX, y = trainy, kernel = "linear")
+
+
+Parameters:
+   SVM-Type:  C-classification 
+ SVM-Kernel:  linear 
+       cost:  1 
+      gamma:  0.01754385965 
+
+Number of Support Vectors:  708
+
+ ( 363 345 )
+
+
+Number of Classes:  2 
+
+Levels: 
+ ham spam
+
+
+
+True positive rate:   0.9500693481 
+False positive rate:  0.1106471816 
+True negative rate:   0.8893528184 
+False negative rate:  0.04993065187 
+Misclassification rate:  0.07416666667 
+Tuned e1071 SVM results
+
+
+Call:
+svm.default(x = trainX, y = trainy, kernel = "linear")
+
+
+Parameters:
+   SVM-Type:  C-classification 
+ SVM-Kernel:  linear 
+       cost:  1 
+      gamma:  0.01754385965 
+
+Number of Support Vectors:  708
+
+ ( 363 345 )
+
+
+Number of Classes:  2 
+
+Levels: 
+ ham spam
+
+
+
+True positive rate:   0.9625520111 
+False positive rate:  0.1002087683 
+True negative rate:   0.8997912317 
+False negative rate:  0.0374479889 
+Misclassification rate:  0.0625 
