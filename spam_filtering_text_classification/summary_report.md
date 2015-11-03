@@ -47,18 +47,14 @@ Misclassification rate:  0.06666666667 <br>
 
 Performance was by far the greatest in our c50 classifier.
 
-Classifier  | Misclassification rate
+Classifier  | Misclassification Rate
 ------------- | -------------
 c50  | 0.03916666667
 svm  | 0.0625 
 nn   | 0.06666666667
 kNN  | 0.1908333333
 
+##Recommendation
 
-4) On the basis of your results, recommend one or more classifier, and explain your rationale.
+Based on the lowest misclassification rate, we would recommend c50 as our classifier. This library has been thouroughly developed and based on our experiments, we were able to improve the misclassification rate with ease. This misclassification rate was low in this model because we were able to have a high true positive rate, low positive rate, high true negative rate, and low false positive rate.
 
-
-TODO: 
-	1) Create a random training set and test set
-		2) Think about false positives
-	2)

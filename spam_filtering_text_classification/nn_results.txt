@@ -1,0 +1,45 @@
+hidden: 10    thresh: 0.5    rep: 1/2    steps:     100 min thresh: 49.65152669
+                                                    200 min thresh: 12.31414764
+                                                    300 min thresh: 3.127048416
+                                                    400 min thresh: 3.127048416
+                                                    500 min thresh: 1.099644563
+                                                    600 min thresh: 0.9623743082
+                                                    700 min thresh: 0.623680084
+                                                    800 min thresh: 0.623680084
+                                                    900 min thresh: 0.623680084
+                                                   1000 min thresh: 0.623680084
+                                                   1100 min thresh: 0.623680084
+                                                   1200 min thresh: 0.623680084
+                                                   1300 min thresh: 0.623680084
+                                                   1385 error: 59.07956 time: 9.35 secs
+hidden: 10    thresh: 0.5    rep: 2/2    steps:     100 min thresh: 10.45448129
+                                                    200 min thresh: 2.731011386
+                                                    300 min thresh: 2.571338463
+                                                    400 min thresh: 1.719095891
+                                                    500 min thresh: 0.6611644025
+                                                    600 min thresh: 0.6611644025
+                                                    700 min thresh: 0.6611644025
+                                                    800 min thresh: 0.6611644025
+                                                    900 min thresh: 0.6611644025
+                                                   1000 min thresh: 0.5389915924
+                                                   1100 min thresh: 0.5389915924
+                                                   1200 min thresh: 0.5389915924
+                                                   1300 min thresh: 0.5389915924
+                                                   1400 min thresh: 0.5389915924
+                                                   1500 min thresh: 0.5389915924
+                                                   1544 error: 61.54662 time: 10.55 secs
+Call: neuralnet(formula = form, data = email[1:3400, ], hidden = 10,     threshold = 0.5, rep = 2, lifesign = "full", lifesign.step = 100)
+
+2 repetitions were calculated.
+
+        Error Reached Threshold Steps
+1 59.07956472      0.4560175492  1385
+2 61.54661796      0.4910833268  1544
+
+neuralnet ANN results
+
+True positive rate:   0.9611650485 
+False positive rate:  0.108559499 
+True negative rate:   0.891440501 
+False negative rate:  0.03883495146 
+Misclassification rate:  0.06666666667 
