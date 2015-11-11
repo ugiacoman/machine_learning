@@ -5,6 +5,7 @@ import time
 import math
 
 def classify(path, h_p_text, s_p_text):
+	""" Returns dict with all emails in path and classifies them as either spam or ham"""
 	data = []
 	classify_dict = {}
 	for dir_entry in os.listdir(path):
@@ -23,15 +24,33 @@ def classify(path, h_p_text, s_p_text):
 	            	if word in s_p_text:
 	            		P = s_p_text[word]
 	            		spam_probablity += math.log(P)
+	            	# print("ham: %f spam %f", (ham_probablity, spam_probablity))
 	            	if ham_probablity > spam_probablity:
 	            		classify_dict[dir_entry_path] = "ham"
 	            	else:
 	            		classify_dict[dir_entry_path] = "spam"
 	return classify_dict
 
+def compile_data(classified_data, ham_or_spam):
+	""" Calculates Misclassfication Rate  """
+	spam_count = 0
+	ham_count = 0
+	total = 0
+	for email in classified_data:
+		if classified_data[email] == "spam":
+			spam_count += 1
+		else:
+			ham_count += 1
+	total = ham_count + spam_count
+	if ham_or_spam == "ham":	
+		misclassification_rate = (1 - ham_count / total)
+	else:
+		misclassification_rate = (1 - spam_count / total)
 
+	gini_index = (ham_count / total * (1 - ham_count / total)) + (spam_count / total * (1 - spam_count / total))
+	entropy = -((ham_count / total) * math.log(ham_count/total, 2) + (spam_count / total) * math.log(spam_count / total, 2))
 
-
+	return (misclassification_rate, gini_index, entropy)
 
 def parse_instances(path):
 	""" Parses email and returns all strings to lower. """

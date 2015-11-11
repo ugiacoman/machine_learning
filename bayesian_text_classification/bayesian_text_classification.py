@@ -13,7 +13,7 @@ def main():
  	spam_test_path = ""
 
  	""" Variables: Adjust model here. To view symbols and common words used go to tokens.py discriminate() """
- 	remove_factor = 50
+ 	remove_factor = 20
  	ignore_symbols = True
 	ignore_common_words = True
 
@@ -54,20 +54,14 @@ def main():
 
 	h_p_text = tokens.probablity(h_d_text, M)
 	s_p_text = tokens.probablity(s_d_text, M)
-	# print(h_p_text)
 
+	# Classifies all emails in directory as spam or ham
+	test_ham_classify = tokens.classify(ham_test_path, h_p_text, s_p_text)
+	test_spam_classify = tokens.classify(spam_test_path, h_p_text, s_p_text)
 
-	ham_classify = tokens.classify(ham_test_path, h_p_text, s_p_text)
-	# print(ham_classify)
-	spam_count = 0
-	ham_count = 0
-	for email in ham_classify:
-		if ham_classify[email] == "spam":
-			spam_count += 1
-		else:
-			ham_count += 1
-
-	misclassification_rate = (spam_count / (ham_count + spam_count))
+	# Finds misclassification rate
+	h_misclass_data = tokens.compile_data(test_ham_classify, "ham")
+	s_misclass_data = tokens.compile_data(test_ham_classify, "spam")
 
 
 	# Display results
@@ -80,8 +74,6 @@ def main():
 	print("")
 	print("Training Ham Path: %s" % (ham_path))
 	print("Training Spam Path: %s" % (spam_path))
-	print("Testing Ham Path: %s" % (ham_test_path))
-	print("Testing Spam Path: %s" % (spam_test_path))
 	print("")
 	print("Results:")
 	print("Time Elapsed: %f" % (elapsed_time))
@@ -90,7 +82,16 @@ def main():
 	print("Spam: Amount of Words Before Discrimination: %d" % (len(s_text)))
 	print("Spam: Amount of Words After Discrimination:  %d" % (s_N))
 	print("")
-	print("Misclassification Rate: %f" % (misclassification_rate))
+	print("** Ham Test Data ** (%s)" % (ham_test_path))
+	print("Misclassification Rate: %f" % (h_misclass_data[0]))
+	print("Gini Index: %f" % (h_misclass_data[1]))
+	print("Entropy: %f" % (h_misclass_data[2]))
+	print("")
+	print("** Spam Test Data ** (%s)" % (spam_test_path))
+	print("Misclassification Rate: %f" % (s_misclass_data[0]))
+	print("Gini Index: %f" % (s_misclass_data[1]))
+	print("Entropy: %f" % (s_misclass_data[2]))
+	print("")
 
 
 if __name__ == '__main__':

@@ -1,4 +1,4 @@
-training_ham_path: training/decap/easy_ham/
+training_ham_path: training/decap/hard_ham/
 training_spam_path: training/decap/spam/
-testing_ham_path: test/decap/easy_ham/
+testing_ham_path: test/decap/hard_ham/
 testing_spam_path: test/decap/spam/
