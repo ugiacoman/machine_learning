@@ -1,5 +1,4 @@
 from __future__ import division
-import enchant
 import os
 import time
 import math
