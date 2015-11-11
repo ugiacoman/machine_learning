@@ -12,7 +12,9 @@ def main():
  	spam_test_path = ""
 
  	""" Variables: Adjust model here. To view symbols and common words used go to tokens.py discriminate() """
- 	remove_factor = 20
+
+
+ 	remove_factor = 20 			# i.e. remove_factor = 4 (we will remove all words with a count less than or equal to 4)
  	ignore_symbols = True
 	ignore_common_words = True
 
@@ -60,7 +62,7 @@ def main():
 
 	# Finds misclassification rate
 	h_misclass_data = tokens.compile_data(test_ham_classify, "ham")
-	s_misclass_data = tokens.compile_data(test_ham_classify, "spam")
+	s_misclass_data = tokens.compile_data(test_spam_classify, "spam")
 
 
 	# Display results

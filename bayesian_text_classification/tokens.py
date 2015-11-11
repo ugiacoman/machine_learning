@@ -23,14 +23,14 @@ def classify(path, h_p_text, s_p_text):
 	            	if word in s_p_text:
 	            		P = s_p_text[word]
 	            		spam_probablity += math.log(P)
-	            	# print("ham: %f spam %f", (ham_probablity, spam_probablity))
+
 	            	if ham_probablity > spam_probablity:
 	            		classify_dict[dir_entry_path] = "ham"
 	            	else:
-	            		classify_dict[dir_entry_path] = "spam"
+	            		classify_dict[dir_entry_path] = "spam"	            		
 	return classify_dict
 
-def compile_data(classified_data, ham_or_spam):
+def compile_data(classified_data, classifier):
 	""" Calculates Misclassfication Rate  """
 	spam_count = 0
 	ham_count = 0
@@ -40,11 +40,13 @@ def compile_data(classified_data, ham_or_spam):
 			spam_count += 1
 		else:
 			ham_count += 1
+	
 	total = ham_count + spam_count
-	if ham_or_spam == "ham":	
-		misclassification_rate = (1 - ham_count / total)
+
+	if classifier == "ham":	
+		misclassification_rate = (1 - (ham_count / total))
 	else:
-		misclassification_rate = (1 - spam_count / total)
+		misclassification_rate = (1 - (spam_count / total))
 
 	gini_index = (ham_count / total * (1 - ham_count / total)) + (spam_count / total * (1 - spam_count / total))
 	entropy = -((ham_count / total) * math.log(ham_count/total, 2) + (spam_count / total) * math.log(spam_count / total, 2))
@@ -70,7 +72,7 @@ def getCount(full_text, remove_factor):
 	""" Returns Dictionary as word_count = {"word" : count, ...} Deletes all keys with only 1 value """
 
 	word_count = {}
-	# i.e. remove_factor = 4 (we will remove all words with a count less than or equal to 4)
+	
 
 	for word in full_text:
 		if word not in word_count:
