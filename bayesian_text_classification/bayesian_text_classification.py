@@ -1,3 +1,4 @@
+from __future__ import division
 import enchant
 import os
 import time
@@ -12,7 +13,7 @@ def main():
  	spam_test_path = ""
 
  	""" Variables: Adjust model here. To view symbols and common words used go to tokens.py discriminate() """
- 	remove_factor = 10
+ 	remove_factor = 50
  	ignore_symbols = True
 	ignore_common_words = True
 
@@ -53,7 +54,20 @@ def main():
 
 	h_p_text = tokens.probablity(h_d_text, M)
 	s_p_text = tokens.probablity(s_d_text, M)
+	# print(h_p_text)
 
+
+	ham_classify = tokens.classify(ham_test_path, h_p_text, s_p_text)
+	# print(ham_classify)
+	spam_count = 0
+	ham_count = 0
+	for email in ham_classify:
+		if ham_classify[email] == "spam":
+			spam_count += 1
+		else:
+			ham_count += 1
+
+	misclassification_rate = (spam_count / (ham_count + spam_count))
 
 
 	# Display results
@@ -76,6 +90,7 @@ def main():
 	print("Spam: Amount of Words Before Discrimination: %d" % (len(s_text)))
 	print("Spam: Amount of Words After Discrimination:  %d" % (s_N))
 	print("")
+	print("Misclassification Rate: %f" % (misclassification_rate))
 
 
 if __name__ == '__main__':

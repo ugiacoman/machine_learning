@@ -2,13 +2,39 @@ from __future__ import division
 import enchant
 import os
 import time
+import math
+
+def classify(path, h_p_text, s_p_text):
+	data = []
+	classify_dict = {}
+	for dir_entry in os.listdir(path):
+	    dir_entry_path = os.path.join(path, dir_entry)
+	    if os.path.isfile(dir_entry_path):
+	        with open(dir_entry_path, 'r') as my_file:
+	            my_file_string = my_file.read()
+	            word_list = my_file_string.split()
+	            word_list = map(lambda x:x.lower(), word_list)
+	            ham_probablity = 0
+	            spam_probablity = 0
+	            for word in word_list:
+	            	if word in h_p_text:
+	            		P = h_p_text[word]
+	            		ham_probablity += math.log(P)
+	            	if word in s_p_text:
+	            		P = s_p_text[word]
+	            		spam_probablity += math.log(P)
+	            	if ham_probablity > spam_probablity:
+	            		classify_dict[dir_entry_path] = "ham"
+	            	else:
+	            		classify_dict[dir_entry_path] = "spam"
+	return classify_dict
+
+
+
 
 
 def parse_instances(path):
-	""" Parses email and returns all strings to lower. 
-
-	TODO: Have it read all emails
-	"""
+	""" Parses email and returns all strings to lower. """
 
 	data = []
 	for dir_entry in os.listdir(path):
