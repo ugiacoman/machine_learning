@@ -6,7 +6,6 @@ import tokens
 def main():
 	start_time = time.time()
 	settings = open("settings.txt", "r")
-	settings_dict = {}
 	ham_path = ""
  	spam_path = ""
 
@@ -17,37 +16,43 @@ def main():
 		else:
 			spam_path = line[1]
 
-	"""Ham Parse"""
+	"""Parse Ham emails"""
 	# Splits string into list of strings and lowercases them
-	h_full_text = tokens.parse(ham_path)
+	h_text = tokens.parse_instances(ham_path)
 
 	# Gets count of each string
-	h_count_dict = tokens.getCount(h_full_text)
+	h_c_text = tokens.getCount(h_text)
 
 	# Eliminates strings we don't want to count
-	h_d_text = tokens.discriminate(h_count_dict)
-	# print(d_text)
+	h_d_text = tokens.discriminate(h_c_text)
+	h_N = len(h_d_text) 
 
-	"""Spam Parse"""
+	"""Parse Spam emails"""
 	# Splits string into list of strings and lowercases them
-	s_full_text = tokens.parse(spam_path)
+	s_text = tokens.parse_instances(spam_path)
 
 	# Gets count of each string
-	s_count_dict = tokens.getCount(s_full_text)
+	s_c_text = tokens.getCount(s_text)
 
 	# Eliminates strings we don't want to count
-	s_d_text = tokens.discriminate(s_count_dict)
-	# print(d_text)
+	s_d_text = tokens.discriminate(s_c_text)
+	s_N = len(s_d_text) 
+	M = h_N + s_N
+
+	h_p_text = tokens.probablity(h_d_text, M)
+	s_p_text = tokens.probablity(s_d_text, M)
+
+
 
 	# Display results
 	elapsed_time = time.time() - start_time
 	print("")
 	print("Results:")
 	print("Time Elapsed: %f" % (elapsed_time))
-	print("Ham: Amount of Words Before Discrimination: %d" % (len(h_full_text)))
-	print("Ham: Amount of Words After Discrimination:  %d" % (len(h_d_text)))
-	print("Spam: Amount of Words Before Discrimination: %d" % (len(s_full_text)))
-	print("Spam: Amount of Words After Discrimination:  %d" % (len(s_d_text)))
+	print("Ham: Amount of Words Before Discrimination: %d" % (len(h_text)))
+	print("Ham: Amount of Words After Discrimination:  %d" % (h_N))
+	print("Spam: Amount of Words Before Discrimination: %d" % (len(s_text)))
+	print("Spam: Amount of Words After Discrimination:  %d" % (s_N))
 	print("")
 
 

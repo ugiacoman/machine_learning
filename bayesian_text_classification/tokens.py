@@ -1,8 +1,10 @@
+from __future__ import division
 import enchant
 import os
 import time
 
-def parse(path):
+
+def parse_instances(path):
 	""" Parses email and returns all strings to lower. 
 
 	TODO: Have it read all emails
@@ -20,19 +22,21 @@ def parse(path):
 	email = map(lambda x:x.lower(),email)
 	return email
 	
-def getCount(d_text):
+def getCount(full_text):
 	""" Returns Dictionary as word_count = {"word" : count, ...} Deletes all keys with only 1 value """
 
 	word_count = {}
+	# i.e. remove_factor = 4 (we will remove all words with a count less than or equal to 4)
+	remove_factor = 10
 
-	for word in d_text:
+	for word in full_text:
 		if word not in word_count:
 			word_count[word] = 1
 		else:
 			word_count[word] = word_count[word] + 1
 	found = []
 	for key in word_count:
-		if word_count[key] == 1 or (len(key) == 1):
+		if word_count[key] <= remove_factor or (len(key) == 1):
 			found.append(key)
 
 	for string in found:
@@ -40,6 +44,18 @@ def getCount(d_text):
 			del word_count[string]
 
 	return word_count
+
+
+def probablity(d_text, M):
+	""" Replaces value(count) of each key with the its probablity"""
+	N = len(d_text)
+	for key in d_text:
+		N_k = d_text[key]
+		P = ((N_k + 1)/(N+M))
+		d_text[key] = P
+
+	return d_text
+
 
 
 def discriminate(full_text):
