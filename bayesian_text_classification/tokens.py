@@ -22,12 +22,11 @@ def parse_instances(path):
 	email = map(lambda x:x.lower(),email)
 	return email
 	
-def getCount(full_text):
+def getCount(full_text, remove_factor):
 	""" Returns Dictionary as word_count = {"word" : count, ...} Deletes all keys with only 1 value """
 
 	word_count = {}
 	# i.e. remove_factor = 4 (we will remove all words with a count less than or equal to 4)
-	remove_factor = 10
 
 	for word in full_text:
 		if word not in word_count:
@@ -58,16 +57,12 @@ def probablity(d_text, M):
 
 
 
-def discriminate(full_text):
+def discriminate(full_text, ignore_symbols, ignore_common_words):
 	""" Returns a discriminated dict of strings with their counts. Choose factors to discriminate below """
-	# Select Discriminating Factors
-	ignore_symbols = True
-	ignore_common_words = True
 
 	# This list contains all words that we will ignore.
 	common_words_list = ["subject:", "email", "the", "a"]
 	
-
 	# List of symbols and numbers that we will ignore
 	symbol_list = ["1","2","3","4","5","6","7","8","9","0","!","@","#","$","%","^",
 					"&","*","(",")","-","_", ".", ",", "<", ">", "?", "/", ":", "[", "]", "{", "}", "|", "\\", "'", "+", "`", "~", "="]
