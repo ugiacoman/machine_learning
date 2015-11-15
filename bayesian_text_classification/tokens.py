@@ -3,7 +3,35 @@ import os
 import time
 import math
 
-def classify(path, h_p_text, s_p_text):
+def s_analysis(data):
+	""" Calculates False Positive Rate """
+	# False positive if ham is actually spam
+	# True negative if ham is ham
+	false_positive = 0
+	true_negative = 0
+	true_positive = 0
+	false_negative = 0
+
+	for email in data:
+		if ("ham" in email) & (data[email] == "spam"):
+			false_positive += 1
+		if ("ham" in email) & (data[email] == "ham"):
+			true_negative += 1
+		if ("spam" in email) & (data[email] == "spam"):
+			true_positive += 1
+		if ("spam" in email) & (data[email] == "ham"):
+			false_negative += 1
+
+	true_positive_rate = (true_positive / (true_positive + false_negative))
+	false_positive_rate = (false_positive / (false_positive + true_negative))
+	false_negative_rate = (1 - true_positive_rate)
+	true_negative_rate = (1 - false_positive_rate)
+
+	analysis = [false_positive_rate, true_positive_rate, false_negative_rate, true_negative_rate]
+	return(analysis)
+
+
+def classify(path, h_p_text, s_p_text, unweighted_p):
 	""" Returns dict with all emails in path and classifies them as either spam or ham"""
 	data = []
 	classify_dict = {}
@@ -18,10 +46,10 @@ def classify(path, h_p_text, s_p_text):
 	            spam_probablity = 0
 	            for word in word_list:
 	            	if word in h_p_text:
-	            		P = h_p_text[word]
-	            		ham_probablity += math.log(P)
+	            		P = h_p_text[word] * unweighted_p # s_p_text[word] * Probablity without taking a look at data
+	            		ham_probablity += math.log(P) 
 	            	if word in s_p_text:
-	            		P = s_p_text[word]
+	            		P = s_p_text[word] * unweighted_p # s_p_text[word] * Probablity without taking a look at data
 	            		spam_probablity += math.log(P)
 
 	            	if ham_probablity > spam_probablity:
@@ -68,6 +96,15 @@ def parse_instances(path):
 	email = map(lambda x:x.lower(),email)
 	return email
 	
+def count_instances(path):
+	count = 0
+	for dir_entry in os.listdir(path):
+	    dir_entry_path = os.path.join(path, dir_entry)
+	    if os.path.isfile(dir_entry_path):
+	        with open(dir_entry_path, 'r') as my_file:
+	            count += 1
+	return count
+
 def getCount(full_text, remove_factor):
 	""" Returns Dictionary as word_count = {"word" : count, ...} Deletes all keys with only 1 value """
 
