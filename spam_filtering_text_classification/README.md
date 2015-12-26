@@ -1,7 +1,7 @@
 #Spam filtering/text classification
 
 
-##Classifier Summaries
+##Classifier Summary Report
 
 ###c50:
 
