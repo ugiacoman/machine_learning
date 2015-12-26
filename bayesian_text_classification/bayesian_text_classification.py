@@ -54,8 +54,10 @@ def main():
 	s_d_text = tokens.discriminate(s_c_text, ignore_symbols, ignore_common_words)
 	s_N = len(s_d_text) 
 
+	# Sizes M
 	M = h_N + s_N
 
+	# Calculates Probability of each string (replaces count with probability)
 	h_p_text = tokens.probablity(h_d_text, M)
 	s_p_text = tokens.probablity(s_d_text, M)
 
