@@ -33,3 +33,5 @@ Different solutions for repeated k-means runs is normal. Since we are using Lloy
 The less pixels, the less will be used to compute the mean value of the cluster center. Therefore the mean value may be more accurate with a higher number of pixels. If the mean value is more accurate, subregions of clusters may also be more accurate.
 
 ### Complexity of Image
+
+For complexity, we can take into account color intensity and different "shades" of the same color can be thought of as multiplication by a constant of a vector in the RGB (R^3) space. Therefore if in the data set we have several clusters, each representing a different level of intensity of our color, they wil all be around the same slant in the RGB space and can be merged together. Using this miminual distance condition can greatly improve the clustering issue that comes with different shades of a color.
